@@ -1,0 +1,39 @@
+<h1>カート</h1>
+
+<% if @cart_items.empty? %>
+  <p>カートに商品が入っていません。</p>
+<% else %>
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>商品</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |item| %>
+        <% product  = item[:product] %>
+        <% quantity = item[:quantity] %>
+        <% subtotal = item[:subtotal] %>
+
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= quantity %></td>
+          <td><%= number_to_currency(subtotal, unit: "¥") %></td>
+          <td>
+            <%= button_to "−", remove_from_cart_path(product_id: product.id), method: :post %>
+            <%= button_to "＋", add_to_cart_path(product_id: product.id), method: :post %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p class="cart-total">
+    合計金額：<strong><%= number_to_currency(@total, unit: "¥") %></strong>
+  </p>
+
+  <%= button_to "カートを空にする", clear_cart_path, method: :post, data: { confirm: "本当に空にしますか？" } %>
+<% end %>
