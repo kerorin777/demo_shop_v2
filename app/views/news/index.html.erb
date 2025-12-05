@@ -1,2 +1,106 @@
-<h1>News#index</h1>
-<p>Find me in app/views/news/index.html.erb</p>
+<%= render "shared/layout_with_menu" do %>
+
+  <section class="news-page">
+
+    <h1 class="page-title">お知らせ</h1>
+
+    <!-- いちばん上に固定：配送について -->
+    <article class="news-item news-pinned">
+      <h2 class="news-title">配送についてのお知らせ</h2>
+      <p class="news-body">
+        通常、ご注文から<span class="news-em">2営業日以内</span>に発送しております。
+      </p>
+      <p class="news-body">
+        クリスマスシーズンはご注文が集中するため、発送までに通常よりお時間を頂戴する場合がございます。
+        あらかじめご了承ください。
+      </p>
+    </article>
+
+    <!-- ここから通常のお知らせ（毎月1本イメージ） -->
+    <div class="news-list">
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">3点</span>入荷しました。ふわふわのファーイヤリングや雪の結晶モチーフなど、
+          冬のお出かけにぴったりのアイテムをご用意しました。
+        </p>
+        <p class="news-date">2024.12.10</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">4点</span>入荷しました。淡いピンクとゴールドを合わせた、
+          バレンタインに似合うハートモチーフのアクセサリーが中心です。
+        </p>
+        <p class="news-date">2025.01.28</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">3点</span>入荷しました。ミモザやチューリップをイメージした、
+          春色のビジューイヤリングが並びました。
+        </p>
+        <p class="news-date">2025.02.15</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">5点</span>入荷しました。桜色のガラスパーツや、
+          新生活に使いやすいシンプルデザインのリングをご用意しています。
+        </p>
+        <p class="news-date">2025.03.30</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">4点</span>入荷しました。新緑を思わせるグリーン系ストーンのイヤリングや、
+          軽やかなゴールドチェーンのアイテムが追加されています。
+        </p>
+        <p class="news-date">2025.04.18</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">3点</span>入荷しました。雨粒のような透明ガラスと、
+          くもり空カラーを組み合わせた、梅雨の季節に似合うアクセサリーです。
+        </p>
+        <p class="news-date">2025.06.07</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">5点</span>入荷しました。ひんやりとしたガラスや貝殻モチーフの、
+          夏の光に映えるアイテムをセレクトしました。
+        </p>
+        <p class="news-date">2025.08.02</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">4点</span>入荷しました。こっくりとしたボルドーやマスタード色を使った、
+          秋コーデに合わせやすいイヤリングとリングが登場です。
+        </p>
+        <p class="news-date">2025.10.12</p>
+      </article>
+
+      <article class="news-item">
+        <h2 class="news-title">新商品入荷しました</h2>
+        <p class="news-body">
+          今回は<span class="news-em">6点</span>入荷しました。クリスマスギフトにおすすめの、
+          ラメ入りガラスやリボンモチーフの特別なシリーズです。
+        </p>
+        <p class="news-date">2025.12.01</p>
+      </article>
+
+    </div>
+  </section>
+
+<% end %>

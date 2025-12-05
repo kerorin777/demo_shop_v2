@@ -1,17 +1,29 @@
+/* ================================
+   ベース
+================================ */
+
 body {
   margin: 0;
   font-family: 'Kiwi Maru', serif;
 }
 
-/* ----- Entrance page 専用スタイル ----- */
+/* 共通英語フォント */
+.english-font {
+  font-family: 'Butterfly Kids', cursive !important;
+  letter-spacing: 0.08em;
+}
+
+/* ================================
+   Entrance page
+================================ */
+
 .entrance-page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  background-color: #646464; 
+  background-color: #E2EEC5;  
 }
 
 .entrance-link {
@@ -37,15 +49,10 @@ body {
 .enter-text {
   margin-top: 4px;
   font-size: 40px;
-  color: #E2EEC5; 
+  color: #EE869A;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.english-font {
-  font-family: 'Butterfly Kids', cursive !important;
-  letter-spacing: 0.08em;
 }
 
 .entrance-link:hover .entrance-gif {
@@ -53,11 +60,434 @@ body {
 }
 
 .entrance-link:hover .enter-text {
-  color: #258C6D; 
+  color: #258C6D;
   transform: scale(1.05);
 }
 
 .entrance-link *,
 .entrance-link {
   text-decoration: none !important;
+}
+
+/* ================================
+   Products index page
+================================ */
+
+.products-page {
+  min-height: 100vh;
+  background-color: #E2EEC5;  /* ベース：淡いミント */
+  padding: 16px 12px 32px;
+}
+
+/* ヘッダー画像・フッター画像 */
+.products-header,
+.products-footer {
+  text-align: center;
+}
+
+.header-image,
+.footer-image {
+  width: 100%;
+  max-width: 2000px;      
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* フッター全体 */
+.products-footer {
+  margin-top: 100;    
+}
+
+.footer-inner {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.footer-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.footer-decoration {
+  position: absolute;
+  left: 50px;          
+  bottom: 0;           
+  transform: translateY(-6%);  
+  width: 250px;        
+  max-width: 30%;       
+  pointer-events: none; 
+}
+
+/* レイアウト（左メニュー + 右コンテンツ） */
+.products-layout {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+/* 左メニュー */
+.side-menu {
+  background-color: #258C6D;
+  border-radius: 18px;
+  padding: 18px 14px;
+  color: #E2EEC5;
+  position: sticky;
+  top: 20px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  margin: 6px 0;
+}
+
+.side-menu .menu-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Butterfly Kids', cursive;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.side-menu .menu-separator {
+  margin: 10px 0;
+  border-bottom: 1px dashed rgba(226, 238, 197, 0.6);
+}
+
+.side-menu a {
+  color: #E2EEC5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  text-align: right;   /* 🔸 右寄せ */
+  transition: background-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+}
+
+.side-menu .english-font {
+  font-family: 'Butterfly Kids', cursive;
+  font-size: 2.5rem; 
+}
+
+.side-menu li.active a,
+.side-menu a:hover {
+  background-color: rgba(226, 238, 197, 0.18);
+  transform: translateX(2px);
+}
+
+/* 右側の商品エリア */
+.products-main {
+  min-height: 200px;
+}
+
+.products-empty {
+  text-align: center;
+  color: #555;
+  padding: 40px 0;
+}
+
+/* 商品グリッド */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+/* 商品カード */
+.product-card {
+  background-color: #fff;
+  border-radius: 18px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.product-name {
+  font-size: 1rem;
+  margin: 4px 0 4px;
+  color: #333;
+}
+
+.product-description {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #258C6D;
+  margin: 4px 0 10px;
+}
+
+.product-actions {
+  margin-top: auto;
+  text-align: right;
+}
+
+.product-add-btn {
+  background-color: #258C6D;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 16px;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'Kiwi Maru', serif;
+  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-add-btn:hover {
+  background-color: #EE869A;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================
+   Cart page
+================================ */
+
+.cart-page {
+  padding: 10px 0 40px;
+}
+
+/* 白い1枚のカートカード */
+.cart-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 18px;
+  padding: 20px 24px 24px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.cart-title {
+  font-size: 1.8rem;
+  margin: 0 0 16px;
+  color: #258C6D;   /* 緑 */
+}
+
+.cart-empty {
+  text-align: center;
+  color: #666;
+  padding: 20px 0;
+}
+
+/* 商品リスト全体 */
+.cart-items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 1行分（1商品の行） */
+.cart-item-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-row:last-child {
+  border-bottom: none;
+}
+
+/* サムネイル */
+.cart-item-thumb-wrap {
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.cart-item-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* 商品情報 */
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: #000000;        /* 商品名を緑に */
+  font-weight: 600;
+}
+
+.cart-item-price,
+.cart-item-subtotal {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #258C6D;        /* 金額系も緑 */
+}
+
+/* 数量ボタンまわり */
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* − ＋ ボタン（商品一覧のボタンと同系統） */
+.cart-qty-btn {
+  background-color: #258C6D;
+  border: none;
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'Kiwi Maru', serif;
+  transition: background-color 0.15s ease, transform 0.15s ease,
+              box-shadow 0.15s ease;
+}
+
+.cart-qty-btn:hover {
+  background-color: #EE869A;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* 数量表示 */
+.cart-item-qty {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: #258C6D;
+}
+
+/* 合計＆「カートを空にする」 */
+.cart-footer-area {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cart-total {
+  margin: 0;
+  font-size: 1rem;
+  color: #258C6D;
+}
+
+.cart-total strong {
+  font-size: 1.2rem;
+}
+
+/* カートを空にするボタンも緑の丸ボタンに */
+.cart-clear-btn {
+  background-color: #258C6D;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: 'Kiwi Maru', serif;
+  transition: background-color 0.15s ease, transform 0.15s ease,
+              box-shadow 0.15s ease;
+}
+
+.cart-clear-btn:hover {
+  background-color: #EE869A;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================
+   News page
+================================ */
+
+.news-page {
+  padding: 10px 0 40px;
+}
+
+/* ページタイトル（Cart と共用してもOK） */
+.page-title {
+  font-size: 1.8rem;
+  margin: 0 0 16px;
+  color: #258C6D;   /* 緑 */
+}
+
+/* 固定お知らせ＋通常お知らせのカード共通 */
+.news-item {
+  background-color: #fff;
+  border-radius: 18px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 14px;
+}
+
+/* 一番上の固定（配送のお知らせ）を少し強調 */
+.news-pinned {
+  border-left: 4px solid #258C6D;
+}
+
+/* タイトルは緑 */
+.news-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #258C6D;
+}
+
+/* 本文は黒（ややグレー寄りでもOK） */
+.news-body {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* 強調用（点数とか） */
+.news-em {
+  font-weight: 600;
+  color: #258C6D;
+}
+
+/* 日付は右寄せ＆小さめ */
+.news-date {
+  margin: 6px 0 0;
+  text-align: right;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* 全体リストの余白 */
+.news-list {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

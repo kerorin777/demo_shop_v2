@@ -3,7 +3,6 @@ class CartController < ApplicationController
 
   # GET /cart
   def index
-    # @cart_items と @total は load_cart でセット済み
   end
 
   # POST /cart/add/:product_id

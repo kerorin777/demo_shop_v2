@@ -1,39 +1,70 @@
-<h1>カート</h1>
+<%= render "shared/layout_with_menu" do %>
 
-<% if @cart_items.empty? %>
-  <p>カートに商品が入っていません。</p>
-<% else %>
-  <table class="cart-table">
-    <thead>
-      <tr>
-        <th>商品</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @cart_items.each do |item| %>
-        <% product  = item[:product] %>
-        <% quantity = item[:quantity] %>
-        <% subtotal = item[:subtotal] %>
+  <div class="cart-page">
+    <div class="cart-card">
+      <h1 class="cart-title english-font">Cart</h1>
 
-        <tr>
-          <td><%= product.name %></td>
-          <td><%= quantity %></td>
-          <td><%= number_to_currency(subtotal, unit: "¥") %></td>
-          <td>
-            <%= button_to "−", remove_from_cart_path(product_id: product.id), method: :post %>
-            <%= button_to "＋", add_to_cart_path(product_id: product.id), method: :post %>
-          </td>
-        </tr>
+      <% if @cart_items.empty? %>
+        <p class="cart-empty">カートに商品が入っていません。</p>
+      <% else %>
+
+        <ul class="cart-items-list">
+          <% @cart_items.each do |item| %>
+            <% product  = item[:product] %>
+            <% quantity = item[:quantity] %>
+            <% subtotal = item[:subtotal] %>
+
+            <li class="cart-item-row">
+              <div class="cart-item-thumb-wrap">
+                <% if product.image_path.present? %>
+                  <%= image_tag product.image_path,
+                                alt: product.name,
+                                class: "cart-item-thumb" %>
+                <% end %>
+              </div>
+
+              <div class="cart-item-info">
+                <p class="cart-item-name"><%= product.name %></p>
+                <p class="cart-item-price">
+                  単価：¥<%= number_with_delimiter(product.price) %>
+                </p>
+                <p class="cart-item-subtotal">
+                  小計：¥<%= number_with_delimiter(subtotal) %>
+                </p>
+              </div>
+
+              <div class="cart-item-actions">
+                <%= button_to "−",
+                              remove_from_cart_path(product_id: product.id),
+                              method: :post,
+                              class: "cart-qty-btn" %>
+
+                <span class="cart-item-qty"><%= quantity %></span>
+
+                <%= button_to "＋",
+                              add_to_cart_path(product_id: product.id),
+                              method: :post,
+                              class: "cart-qty-btn" %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+
+        <div class="cart-footer-area">
+          <p class="cart-total">
+            合計金額：
+            <strong>¥<%= number_with_delimiter(@total) %></strong>
+          </p>
+
+          <%= button_to "カートを空にする",
+                        clear_cart_path,
+                        method: :post,
+                        data: { confirm: "本当に空にしますか？" },
+                        class: "cart-clear-btn" %>
+        </div>
+
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 
-  <p class="cart-total">
-    合計金額：<strong><%= number_to_currency(@total, unit: "¥") %></strong>
-  </p>
-
-  <%= button_to "カートを空にする", clear_cart_path, method: :post, data: { confirm: "本当に空にしますか？" } %>
 <% end %>

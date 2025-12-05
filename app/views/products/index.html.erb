@@ -1,2 +1,93 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<!-- app/views/products/index.html.erb -->
+
+<div class="products-page">
+
+  <!-- 上のヘッダー画像 -->
+  <header class="products-header">
+    <%= image_tag "header_bannerv2.png", class: "header-image", alt: "header" %>
+  </header>
+
+  <!-- 左メニュー + 右商品一覧 -->
+  <div class="products-layout">
+
+    <!-- 左メニュー -->
+    <aside class="side-menu">
+      <ul>
+        <li class="menu-title">MENU</li>
+
+        <li class="<%= 'active' if @category.blank? %>">
+          <%= link_to "all items", products_path, class: "english-font" %>
+        </li>
+
+        <li class="<%= 'active' if @category == 'earring' %>">
+          <%= link_to "earrings", products_path(category: "earring"), class: "english-font" %>
+        </li>
+
+        <li class="<%= 'active' if @category == 'ring' %>">
+          <%= link_to "rings", products_path(category: "ring"), class: "english-font" %>
+        </li>
+
+        <li class="menu-separator"></li>
+
+        <li>
+          <%= link_to "お知らせ", news_path %>
+        </li>
+        <li>
+          <%= link_to "会社情報", company_path %>
+        </li>
+        <li>
+          <%= link_to "お問い合わせ", contact_path %>
+        </li>
+        <li>
+          <%= link_to "カートを見る", cart_path %>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- 右：商品グリッド -->
+    <main class="products-main">
+      <% if @products.empty? %>
+        <p class="products-empty">
+          該当する商品がありません。
+        </p>
+      <% else %>
+        <div class="products-grid">
+          <% @products.each do |product| %>
+            <article class="product-card">
+              <% if product.image_path.present? %>
+                <%= image_tag product.image_path,
+                              alt: product.name,
+                              class: "product-image" %>
+              <% end %>
+
+              <h2 class="product-name"><%= product.name %></h2>
+
+              <% if product.description.present? %>
+                <p class="product-description"><%= product.description %></p>
+              <% end %>
+
+              <p class="product-price">
+                ¥<%= number_with_delimiter(product.price) %>
+              </p>
+
+              <div class="product-actions">
+                <%= button_to "カートに入れる",
+                              add_to_cart_path(product.id),
+                              method: :post,
+                              class: "product-add-btn" %>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      <% end %>
+    </main>
+
+  </div>
+
+<!-- 下のフッター画像 + 飾りイラスト -->
+  <footer class="products-footer">
+    <div class="footer-inner">
+      <%= image_tag "footer_bannerv2.png", class: "footer-image", alt: "footer" %>
+      <%= image_tag "footer_pic.png", class: "footer-decoration", alt: "footer decoration" %>
+    </div>
+  </footer>

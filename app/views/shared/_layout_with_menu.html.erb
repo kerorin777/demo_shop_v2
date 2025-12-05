@@ -1,0 +1,52 @@
+<div class="products-page">
+
+  <!-- ヘッダー -->
+  <header class="products-header">
+    <%= image_tag "header_bannerv2.png", class: "header-image", alt: "header" %>
+  </header>
+
+  <!-- 左メニュー + メインコンテンツ -->
+  <div class="products-layout">
+
+    <!-- 左メニュー -->
+    <aside class="side-menu">
+      <ul>
+        <li class="menu-title">MENU</li>
+
+        <li class="<%= 'active' if controller_name == 'products' %>">
+          <%= link_to "all items", products_path, class: "english-font" %>
+        </li>
+
+        <li class="<%= 'active' if params[:category] == 'earring' %>">
+          <%= link_to "earrings", products_path(category: "earring"), class: "english-font" %>
+        </li>
+
+        <li class="<%= 'active' if params[:category] == 'ring' %>">
+          <%= link_to "rings", products_path(category: "ring"), class: "english-font" %>
+        </li>
+
+        <li class="menu-separator"></li>
+
+        <li><%= link_to "お知らせ", news_path %></li>
+        <li><%= link_to "会社情報", company_path %></li>
+        <li><%= link_to "お問い合わせ", contact_path %></li>
+        <li><%= link_to "カートを見る", cart_path %></li>
+      </ul>
+    </aside>
+
+    <!-- ページごとの内容が入る部分 -->
+    <main class="products-main">
+      <%= yield %>
+    </main>
+
+  </div>
+
+  <!-- フッター -->
+  <footer class="products-footer">
+    <div class="footer-inner">
+      <%= image_tag "footer_bannerv2.png", class: "footer-image", alt: "footer" %>
+      <%= image_tag "footer_pic.png", class: "footer-decoration", alt: "footer decoration" %>
+    </div>
+  </footer>
+
+</div>
