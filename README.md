@@ -1,24 +1,41 @@
-# README
+# demo_shop_v2（Rails EC サイト試作）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+架空の雑貨ショップを想定した、Ruby on Rails による EC サイトの試作プロジェクトです。  
+Rails の基本構造（ルーティング／コントローラ／ビュー）や、レイアウト・画像表示の方法を学ぶことを目的としています。
 
-Things you may want to cover:
+## 機能概要
 
-* Ruby version
+- トップページの表示（ショップのイメージバナー・商品イメージなど）
+- 会社概要ページの表示
+- お問い合わせページの表示（フォーム風レイアウトのみ、送信機能は未実装）
+- 共通ヘッダー／フッターのレイアウト
+- 画像（ヘッドバナー・フッターバナー・商品画像）の表示
+- シンプルなレイアウト調整（文字サイズ・余白・画像サイズなど）
 
-* System dependencies
+※ 現時点では、DB を用いた商品管理やカート機能などは未実装です。
 
-* Configuration
+## 使用技術・環境
 
-* Database creation
+- Ruby
+- Ruby on Rails
+- SQLite（開発環境）
+- HTML / ERB テンプレート
+- CSS
+- Git / GitHub
 
-* Database initialization
+## セットアップ・実行方法（開発環境）
 
-* How to run the test suite
+```bash
+# リポジトリをクローン
+git clone https://github.com/kerorin777/demo_shop_v2.git
+cd demo_shop_v2
 
-* Services (job queues, cache servers, search engines, etc.)
+# 必要なライブラリをインストール
+bundle install
 
-* Deployment instructions
+# データベース作成（必要に応じて）
+bin/rails db:create
+bin/rails db:migrate
 
-* ...
+# 開発サーバー起動
+bin/rails server
